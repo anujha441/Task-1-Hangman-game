@@ -1,0 +1,33 @@
+Advanced Hangman Game with Word Shuffle 
+
+import random
+
+words = ["python", "school", "friend", "mobile", "coding"]
+
+word = random.choice(words)
+
+letters = list(word)
+random.shuffle(letters)
+
+jumbled_word = "".join(letters)
+
+print("=== Jumbled Word Hangman ===")
+print("Guess the correct word:")
+print(jumbled_word)
+
+attempts = 3
+
+while attempts > 0:
+    guess = input("Your Guess: ").lower()
+
+    if guess == word:
+        print("Congratulations! You guessed the word.")
+        break
+    else:
+        attempts -= 1
+        print("Wrong Guess!")
+        print("Attempts Left:", attempts)
+
+if attempts == 0:
+    print("Game Over!")
+    print("Correct Word:", word)
