@@ -1,0 +1,36 @@
+Added Guessed Letters Tracking in Hangman Game
+
+import random
+
+word_list = ["python", "engineer", "college", "student", "project"]
+word = random.choice(word_list)
+
+progress = ["_"] * len(word)
+tries = 7
+
+print("Welcome to Hangman!")
+
+while tries > 0:
+
+    print("\nWord:", " ".join(progress))
+    letter = input("Enter a letter: ").lower()
+
+    found = False
+
+    for i in range(len(word)):
+        if word[i] == letter:
+            progress[i] = letter
+            found = True
+
+    if not found:
+        tries -= 1
+        print("Incorrect! Attempts left:", tries)
+
+    if "_" not in progress:
+        print("\nYou Won!")
+        print("Word:", word)
+        break
+
+if "_" in progress:
+    print("\nYou Lost!")
+    print("Correct Word:", word)
