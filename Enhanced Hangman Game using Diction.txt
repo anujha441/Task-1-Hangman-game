@@ -1,0 +1,37 @@
+Enhanced Hangman Game using Dictionary 
+
+import random
+
+words = {
+    "Python": "Programming Language",
+    "Laptop": "Electronic Device",
+    "Tiger": "Wild Animal",
+    "Mango": "Fruit"
+}
+
+word = random.choice(list(words.keys())).lower()
+hint = words[word.capitalize()]
+
+print("=== Hangman Game ===")
+print("Hint:", hint)
+
+score = 0
+attempts = 3
+
+while attempts > 0:
+    answer = input("\nGuess the complete word: ").lower()
+
+    if answer == word:
+        score = 10
+        print("Correct! You Won.")
+        break
+    else:
+        attempts -= 1
+        print("Wrong Guess!")
+        print("Attempts Left:", attempts)
+
+if score == 10:
+    print("Your Score:", score)
+else:
+    print("\nGame Over!")
+    print("Correct Word:", word)
